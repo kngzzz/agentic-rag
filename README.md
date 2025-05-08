@@ -13,7 +13,7 @@ An AI-powered personal assistant leveraging Retrieval Augmented Generation (RAG)
 -   **Automated Ingestion**: Local folder watcher (using `watchdog`) to automatically process new or modified files.
 -   **Multi-Layered Memory Architecture**: Designed with working, short-term, episodic, semantic, and procedural memory layers (conceptual).
 -   **Observability**: Integrated with LangSmith for tracing and monitoring application performance and behavior.
--   **Modular Tool Integration**: Supports MCP (Model Context Protocol) for extending capabilities with external tools (e.g., GitHub, DexScreener, Exa AI, Berascan).
+
 
 ## Tech Stack
 
