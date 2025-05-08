@@ -1,0 +1,107 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtualenv
+.venv/
+env/
+venv/
+ENV/
+
+# Python distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# type_stubs
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Node.js / React / TypeScript
+node_modules/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Frontend build artifacts
+build/
+dist/
+.parcel-cache/
+.next/
+out/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Local Vector Stores / Databases (adjust as needed)
+weaviate_data/
+chroma_data/
+.chroma/
+faiss_index/
+*.db
+*.sqlite3
+
+# Test & Coverage output
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+.hypothesis/
+
+# Secrets & Sensitive Config (though .env should cover most)
+secrets.json
+config.local.yaml
+
+# Compiled Output
+*.out
+*.exe
+*.dll
+*.so
+
+# Other temporary files
+temp/
+tmp/

@@ -1,0 +1,392 @@
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5; /* Light gray background for the page */
+    color: #333;
+    line-height: 1.6;
+    padding: 20px; /* Add some padding around the main container */
+}
+
+/* Main Application Container */
+.app-container {
+    max-width: 1200px; /* Max width for the content */
+    margin: 20px auto; /* Center the container on the page, add top/bottom margin */
+    background-color: #ffffff; /* White background for the app itself */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* To contain child elements and rounded corners */
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column; /* Stack children (header, tabs, content) vertically */
+    min-height: 85vh; /* Ensure it takes up significant vertical space */
+}
+
+/* Header Styling */
+.app-header {
+    background-color: #4a90e2; /* A pleasant blue for the header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* Tab Navigation Area */
+.app-tabs {
+    display: flex;
+    background-color: #f7f9fc;
+    border-bottom: 1px solid #dfe3e8;
+    flex-shrink: 0; /* Prevent tabs from shrinking */
+}
+
+.tab-button {
+    padding: 15px 25px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+    color: #555;
+    position: relative; /* For the active indicator */
+    outline: none; /* Remove default focus outline */
+}
+
+.tab-button.active {
+    color: #4a90e2; /* Active tab color */
+    font-weight: bold;
+}
+
+.tab-button.active::after { /* Underline for active tab */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #4a90e2;
+}
+
+.tab-button:hover:not(.active) {
+    background-color: #e9edf1;
+}
+
+/* Main Content Area (Flex Container for Sidebar and Chat) */
+.app-main-content {
+    display: flex;
+    flex-grow: 1; /* Allow main content to fill remaining vertical space */
+    min-height: 0; /* Fix flexbox overflow issue in some browsers */
+}
+
+/* Sidebar (Upload Documents) */
+.sidebar {
+    flex: 0 0 300px; /* Fixed width for sidebar, doesn't grow or shrink */
+    padding: 20px;
+    background-color: #fdfdff; /* Slightly off-white */
+    border-right: 1px solid #dfe3e8;
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+
+.sidebar h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label { /* This might not be used if using the styled label approach */
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* File Upload Specific Styles */
+.file-upload {
+    /* Container for file upload elements */
+}
+
+/* Hide the actual file input */
+.file-input-hidden {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Style the label to look like a button/drop area */
+.file-upload-label {
+  display: block; /* Make it block to take full width */
+  padding: 15px;
+  background-color: #f0f2f5;
+  color: #555;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.file-upload-label:hover {
+  background-color: #e9edf1;
+  border-color: #4a90e2;
+}
+
+/* Style for displaying selected file info */
+.selected-file-info {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+/* Adjust focus style for the hidden input's label */
+.file-input-hidden:focus + .file-upload-label {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+/* General Button Style */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4a90e2; /* Primary button color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: #357abd; /* Darker shade on hover */
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Upload status/error message */
+.file-upload .message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #e9f5ff; /* Light blue for success */
+  color: #333;
+}
+
+.file-upload .message.error {
+  color: #D8000C; /* Error color */
+  background-color: #FFD2D2; /* Light red background */
+  border: 1px solid #D8000C;
+}
+
+
+/* Chat Area (Ask JARVIS) */
+.chat-area {
+    flex-grow: 1; /* Takes up the remaining space */
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack messages and input area vertically */
+    background-color: #fff;
+    min-height: 0; /* Fix flexbox overflow issue */
+}
+
+.chat-area h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.chat-output { /* Was .message-list */
+    flex-grow: 1; /* Allows this area to expand and fill space */
+    border: 1px solid #dfe3e8;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    overflow-y: auto; /* Add scroll for long conversations */
+    background-color: #f9f9f9; /* Light background for chat messages */
+    min-height: 200px; /* Ensure it has some minimum height */
+}
+
+/* Message Bubble Styles */
+.message {
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  border-radius: 18px; /* Slightly less rounded */
+  max-width: 80%;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  line-height: 1.4;
+  display: table; /* Helps with alignment */
+}
+
+.message p {
+  margin: 0;
+}
+
+.message.user {
+  background-color: #4a90e2; /* Primary color */
+  color: white;
+  margin-left: auto; /* Align right */
+  border-bottom-right-radius: 6px; /* Sharper corner */
+}
+
+.message.bot {
+  background-color: #e9edf1; /* Lighter gray for bot */
+  color: #333;
+  margin-right: auto; /* Align left */
+  border-bottom-left-radius: 6px; /* Sharper corner */
+}
+
+/* Sources Styling */
+.message .sources {
+  margin-top: 8px;
+  font-size: 0.8em;
+  border-top: 1px dashed #ccc;
+  padding-top: 8px;
+  color: #555;
+}
+
+.message .sources strong {
+    color: #333;
+}
+
+.message .sources ul {
+  margin: 5px 0 0 0;
+  padding-left: 18px;
+}
+.message .sources li {
+    margin-bottom: 3px;
+}
+
+/* Thought Process Styling */
+.message .thought-process {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #ccc;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.message .thought-process summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #4a90e2;
+  margin-bottom: 5px;
+  outline: none;
+}
+
+.message .thought-process summary:hover {
+  text-decoration: underline;
+}
+
+.message .thought-process pre {
+  background-color: #f0f2f5;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Chat Input Area */
+.chat-input-area {
+    display: flex;
+    gap: 10px; /* Space between input field and send button */
+    flex-shrink: 0; /* Prevent input area from shrinking */
+}
+
+.chat-input-area input[type="text"] {
+    flex-grow: 1; /* Input field takes available space */
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.chat-input-area input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+.chat-input-area button {
+    /* Uses .btn styles */
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Less padding on small screens */
+    }
+    .app-container {
+        width: 100%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+    .app-main-content {
+        flex-direction: column; /* Stack sidebar and chat on smaller screens */
+    }
+
+    .sidebar {
+        flex: 0 0 auto; /* Reset flex basis for stacking */
+        border-right: none;
+        border-bottom: 1px solid #dfe3e8; /* Add border at bottom when stacked */
+        margin-bottom: 20px; /* Add space when stacked */
+    }
+
+    .app-tabs {
+        /* Optional: Stack tabs if needed on very small screens */
+        /* flex-direction: column; */
+    }
+    .tab-button {
+       padding: 12px 15px; /* Adjust padding */
+       flex-grow: 1; /* Allow tabs to share space */
+       text-align: center;
+    }
+    .tab-button.active::after {
+       left: 10%; right: 10%; width: 80%; /* Adjust underline */
+    }
+
+    .message {
+        max-width: 90%; /* Allow messages to be slightly wider */
+    }
+}
